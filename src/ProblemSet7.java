@@ -1,7 +1,6 @@
 public class ProblemSet7 {
     public static void main(String[] args) {
-        long sequence = sequence("aaaaaabbb");
-        System.out.println(sequence);
+        
     }
 
     /*
