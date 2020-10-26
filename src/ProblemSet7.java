@@ -1,6 +1,7 @@
 public class ProblemSet7 {
     public static void main(String[] args) {
-
+        long sequence = sequence("aaaaaabbb");
+        System.out.println(sequence);
     }
 
     /*
@@ -132,26 +133,40 @@ public class ProblemSet7 {
     public static long sequence(String text) {
         if(text == null){
             return -1;
+        }else if (text.equals(" ")){
+            return 0;
         }
         int length = text.length();
         boolean end = true;
         long count = 0;
+        String substring = "";
         for(int i = 0; i < length; i++){
             char current = text.charAt(i);
             if(i < length - 1){
                 if(current == text.charAt((i+1)) && end){
+                    substring+=current;
                     end = false;
                 }
                 if(i > 0){
-                    if(current == text.charAt(i - 1) && current != text.charAt(i+1)){
-                        end = true;
-                        count ++;
+                    if(current == text.charAt(i - 1)){
+                        substring+=current;
+                        if(current != text.charAt(i+1)){
+                            if(substring.length() > count){
+                                count = substring.length();
+                                substring = "";
+                            }
+                            end = true;
+                        }
                     }
                 }
             }else if(i == length - 1){
                 if(current == text.charAt((i-1))){
+                    substring+=current;
+                    if(substring.length() > count){
+                        count = substring.length();
+                        substring = "";
+                    }
                     end = true;
-                    count ++;
                 }
             }
         }
