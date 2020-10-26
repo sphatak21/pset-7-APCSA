@@ -166,19 +166,12 @@ public class ProblemSet7 {
      */
     public static String intertwine(String a, String b) {
         String intertwine = "";
-        int alength = a.length();
-        int blength = b.length();
-        int length = 0;
-        if(alength >= blength){
-            length = alength;
-        }else if (blength > alength){
-            length = blength;
-        }
+        int length = Math.max(a.length(), b.length());
         for(int i = 0; i < length; i++){
-            if(i < alength){
+            if(i < a.length()){
                 intertwine+=Character.toString(a.charAt(i));
             }
-            if(i < blength){
+            if(i < b.length()){
                 intertwine+=Character.toString(b.charAt(i));
             }
         }
